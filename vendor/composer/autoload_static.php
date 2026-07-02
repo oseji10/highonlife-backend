@@ -168,6 +168,7 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
             'Symfony\\Component\\Routing\\' => 26,
             'Symfony\\Component\\Process\\' => 26,
             'Symfony\\Component\\Mime\\' => 23,
+            'Symfony\\Component\\Mailer\\Bridge\\Brevo\\' => 38,
             'Symfony\\Component\\Mailer\\' => 25,
             'Symfony\\Component\\HttpKernel\\' => 29,
             'Symfony\\Component\\HttpFoundation\\' => 33,
@@ -394,6 +395,10 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'Symfony\\Component\\Mime\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/mime',
+        ),
+        'Symfony\\Component\\Mailer\\Bridge\\Brevo\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/symfony/brevo-mailer',
         ),
         'Symfony\\Component\\Mailer\\' =>
         array (
@@ -7860,6 +7865,11 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'Symfony\\Component\\HttpKernel\\Profiler\\ProfilerStorageInterface' => __DIR__ . '/..' . '/symfony/http-kernel/Profiler/ProfilerStorageInterface.php',
         'Symfony\\Component\\HttpKernel\\RebootableInterface' => __DIR__ . '/..' . '/symfony/http-kernel/RebootableInterface.php',
         'Symfony\\Component\\HttpKernel\\TerminableInterface' => __DIR__ . '/..' . '/symfony/http-kernel/TerminableInterface.php',
+        'Symfony\\Component\\Mailer\\Bridge\\Brevo\\RemoteEvent\\BrevoPayloadConverter' => __DIR__ . '/..' . '/symfony/brevo-mailer/RemoteEvent/BrevoPayloadConverter.php',
+        'Symfony\\Component\\Mailer\\Bridge\\Brevo\\Transport\\BrevoApiTransport' => __DIR__ . '/..' . '/symfony/brevo-mailer/Transport/BrevoApiTransport.php',
+        'Symfony\\Component\\Mailer\\Bridge\\Brevo\\Transport\\BrevoSmtpTransport' => __DIR__ . '/..' . '/symfony/brevo-mailer/Transport/BrevoSmtpTransport.php',
+        'Symfony\\Component\\Mailer\\Bridge\\Brevo\\Transport\\BrevoTransportFactory' => __DIR__ . '/..' . '/symfony/brevo-mailer/Transport/BrevoTransportFactory.php',
+        'Symfony\\Component\\Mailer\\Bridge\\Brevo\\Webhook\\BrevoRequestParser' => __DIR__ . '/..' . '/symfony/brevo-mailer/Webhook/BrevoRequestParser.php',
         'Symfony\\Component\\Mailer\\Command\\MailerTestCommand' => __DIR__ . '/..' . '/symfony/mailer/Command/MailerTestCommand.php',
         'Symfony\\Component\\Mailer\\DataCollector\\MessageDataCollector' => __DIR__ . '/..' . '/symfony/mailer/DataCollector/MessageDataCollector.php',
         'Symfony\\Component\\Mailer\\DelayedEnvelope' => __DIR__ . '/..' . '/symfony/mailer/DelayedEnvelope.php',

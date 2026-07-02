@@ -116,5 +116,7 @@ return [
     ],
 
     'admin_notification_address' => env('ADMIN_NOTIFICATION_EMAIL', 'info@devedgecbhafoundation.com'),
-
+'brevo' => [
+    'transport' => 'brevo',
+],
 ];

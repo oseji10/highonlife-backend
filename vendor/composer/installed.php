@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'c0a5687c75939294b24adc3a11d928564fdc81f2',
+        'reference' => '6fa11a218f4acf57ccc1203443cb05ababe39625',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -472,7 +472,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'c0a5687c75939294b24adc3a11d928564fdc81f2',
+            'reference' => '6fa11a218f4acf57ccc1203443cb05ababe39625',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1174,6 +1174,15 @@
             'install_path' => __DIR__ . '/../staabm/side-effects-detector',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'symfony/brevo-mailer' => array(
+            'pretty_version' => 'v7.4.13',
+            'version' => '7.4.13.0',
+            'reference' => '2f7aaebc500b06862865e5b4ec227e35573bda44',
+            'type' => 'symfony-mailer-bridge',
+            'install_path' => __DIR__ . '/../symfony/brevo-mailer',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'symfony/clock' => array(
             'pretty_version' => 'v7.4.0',
