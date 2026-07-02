@@ -1,21 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-</head>
-<body style="font-family: Arial, Helvetica, sans-serif; color:#1f2937; line-height:1.6; margin:0; padding:24px;">
-    <p>Dear {{ trim(($attendee->title ? $attendee->title . ' ' : '') . $attendee->firstName) }},</p>
+@component('mail::message')
+# You're Registered!
 
-    <p>Please find attached your <strong>{{ $typeLabel }}</strong>.</p>
+Hi {{ $registration->full_name }},
 
-    <p>Thank you for being part of {{ $certificate->event->name ?? $certificate->event->title ?? 'the event' }}.</p>
+Thank you for registering for the **High on Life, Not on Drugs Awareness Walk**, hosted by
+DevEdge CBHA Foundation in collaboration with NDLEA.
 
-    <p style="margin-top:24px;">Warm regards,<br>The Organising Team</p>
+**Reference Number:** {{ $registration->reference_number }}
 
-    <hr style="border:none; border-top:1px solid #e5e7eb; margin:24px 0;">
+**Date:** Saturday, 18th July 2026
+**Time:** 9:00 AM
+**Location:** To be confirmed
+**Dress Code:** Comfortable walking shoes / campaign T-shirt if provided
 
-    <p style="font-size:12px; color:#9ca3af;">
-        Certificate No: {{ $certificate->certificateNumber }}
-    </p>
-</body>
-</html>
+Your walk ticket and venue details will be sent once registration goes live.
+
+@component('mail::button', ['url' => config('app.url')])
+Visit Event Page
+@endcomponent
+
+We look forward to walking with you.
+
+Thanks,<br>
+Development Edge for Capacity Building and Health Advancement Foundation<br>
+in collaboration with the National Drug Law Enforcement Agency (NDLEA)
+@endcomponent

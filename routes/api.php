@@ -33,7 +33,10 @@ use App\Http\Controllers\Api\ParticipantMedicalInfoController;
 use App\Http\Controllers\Api\AccreditationController;
 use App\Http\Controllers\Api\CertificateController;
 use App\Http\Controllers\Api\SponsorshipController;
+use App\Http\Controllers\Api\LivingRoomRegistrationController;
 
+use App\Http\Controllers\Api\AwarenessWalkRegistrationController;
+ 
 
 
 
@@ -52,6 +55,11 @@ Route::prefix('auth')->group(function () {
     });
         // Route::put('/conference/attendee/register', [AttendeeController::class, 'store']);
         
+
+        Route::post('/events/living-room-conversation/register', [LivingRoomRegistrationController::class, 'store']);
+        Route::post('/events/awareness-walk/register', [AwarenessWalkRegistrationController::class, 'store']);
+    
+
 Route::middleware(['auth:api', 'facility.scope'])->group(function () {
 
 
