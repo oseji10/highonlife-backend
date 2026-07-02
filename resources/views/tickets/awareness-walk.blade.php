@@ -37,11 +37,11 @@
       </tr>
       <tr>
         <td class="label">Time</td>
-        <td class="value">9:00 AM</td>
+        <td class="value">8:00 AM</td>
       </tr>
       <tr>
-        <td class="label">Venue</td>
-        <td class="value">NDLEA Head Office, Abuja</td>
+        <td class="label">Start Point</td>
+        <td class="value">Monoliza, R.B Dikko Road, Central Business District, Abuja</td>
       </tr>
       <tr>
         <td class="label">Dress Code</td>

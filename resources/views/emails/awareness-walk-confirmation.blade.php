@@ -34,8 +34,8 @@
                   <td style="padding:16px 20px; font-size:14px; color:#4a4a4a;">
                     <strong style="color:#1a1a1a;">Reference Number:</strong> {{ $registration->reference_number }}<br>
                     <strong style="color:#1a1a1a;">Date:</strong> Saturday, 18th July 2026<br>
-                    <strong style="color:#1a1a1a;">Time:</strong> 9:00 AM<br>
-                    <strong style="color:#1a1a1a;">Venue:</strong> NDLEA Head Office, Abuja<br>
+                    <strong style="color:#1a1a1a;">Time:</strong> 8:00 AM<br>
+                    <strong style="color:#1a1a1a;">Start Point:</strong> Monoliza, R.B Dikko Road, Central Business District, Abuja<br>
                     <strong style="color:#1a1a1a;">Dress Code:</strong> Comfortable walking shoes / campaign T-shirt if provided
                   </td>
                 </tr>
