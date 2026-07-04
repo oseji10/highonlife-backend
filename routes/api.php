@@ -36,6 +36,7 @@ use App\Http\Controllers\Api\SponsorshipController;
 use App\Http\Controllers\Api\LivingRoomRegistrationController;
 
 use App\Http\Controllers\Api\AwarenessWalkRegistrationController;
+use App\Http\Controllers\Api\HighOnLifeDashboardController;
  
 
 
@@ -62,7 +63,15 @@ Route::prefix('auth')->group(function () {
 
 Route::middleware(['auth:api', 'facility.scope'])->group(function () {
 
+Route::get('/dashboard/high-on-life', [HighOnLifeDashboardController::class, 'index']);
 
+Route::get('/events/living-room-conversation/registrations', [LivingRoomRegistrationController::class, 'index']);
+Route::post('/events/living-room-conversation/registrations/{livingRoomRegistration}/resend-ticket', [LivingRoomRegistrationController::class, 'resendTicket']);
+Route::delete('/events/living-room-conversation/registrations/{livingRoomRegistration}', [LivingRoomRegistrationController::class, 'destroy']);
+ 
+Route::get('/events/awareness-walk/registrations', [AwarenessWalkRegistrationController::class, 'index']);
+Route::post('/events/awareness-walk/registrations/{awarenessWalkRegistration}/resend-ticket', [AwarenessWalkRegistrationController::class, 'resendTicket']);
+Route::delete('/events/awareness-walk/registrations/{awarenessWalkRegistration}', [AwarenessWalkRegistrationController::class, 'destroy']);
 
 // Public routes (or authenticated routes for participants)
 

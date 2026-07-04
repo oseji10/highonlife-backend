@@ -12,20 +12,27 @@ use Illuminate\Support\Facades\Mail;
 
 class AwarenessWalkRegistrationController extends Controller
 {
-    /**
-     * Maximum number of registrations accepted for this event.
-     * Once this is reached, no further applications are collected.
-     */
-    private const CAPACITY = 100;
+    public function index()
+    {
+        $registrations = AwarenessWalkRegistration::query()->latest()->get();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Registrations retrieved successfully.',
+            'data' => AwarenessWalkRegistrationResource::collection($registrations),
+        ]);
+    }
 
     public function store(StoreAwarenessWalkRegistrationRequest $request)
     {
+        $capacity = (int) config('high_on_life.awareness_walk_capacity');
+
         // Lock the table while we check + insert so two simultaneous submissions
         // near the cap can't both slip through and push the count past capacity.
-        $registration = DB::transaction(function () use ($request) {
+        $registration = DB::transaction(function () use ($request, $capacity) {
             $currentCount = AwarenessWalkRegistration::query()->lockForUpdate()->count();
 
-            if ($currentCount >= self::CAPACITY) {
+            if ($currentCount >= $capacity) {
                 return null;
             }
 
@@ -42,24 +49,47 @@ class AwarenessWalkRegistrationController extends Controller
             ], 422);
         }
 
-        try {
-           \Log::info('Sending with BCC', ['bcc' => config('mail.admin_notification_address')]);
-
-Mail::to($registration->email)
-    ->bcc(config('mail.admin_notification_address'))
-    ->send(new AwarenessWalkRegistrationConfirmation($registration));
-    
-            $registration->update(['confirmation_sent_at' => now()]);
-        } catch (\Throwable $e) {
-            // Don't fail the registration if the email fails to send —
-            // log it so it can be resent manually or via a retry job.
-            report($e);
-        }
+        $this->sendConfirmation($registration);
 
         return response()->json([
             'success' => true,
             'message' => 'Registration successful! Check your email for confirmation.',
             'data' => new AwarenessWalkRegistrationResource($registration),
         ], 201);
+    }
+
+    public function resendTicket(AwarenessWalkRegistration $awarenessWalkRegistration)
+    {
+        $this->sendConfirmation($awarenessWalkRegistration);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Ticket resent successfully.',
+        ]);
+    }
+
+    public function destroy(AwarenessWalkRegistration $awarenessWalkRegistration)
+    {
+        $awarenessWalkRegistration->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Registration deleted successfully.',
+        ]);
+    }
+
+    private function sendConfirmation(AwarenessWalkRegistration $registration): void
+    {
+        try {
+            Mail::to($registration->email)
+                ->bcc(config('mail.admin_notification_address'))
+                ->send(new AwarenessWalkRegistrationConfirmation($registration));
+
+            $registration->update(['confirmation_sent_at' => now()]);
+        } catch (\Throwable $e) {
+            // Don't fail the request if the email fails to send —
+            // log it so it can be retried manually.
+            report($e);
+        }
     }
 }
