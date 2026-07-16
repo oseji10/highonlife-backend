@@ -6,5 +6,5 @@
 
 return [
     'living_room_capacity' => env('LIVING_ROOM_CAPACITY', 50),
-    'awareness_walk_capacity' => env('AWARENESS_WALK_CAPACITY', 100),
+    'awareness_walk_capacity' => env('AWARENESS_WALK_CAPACITY', 400),
 ];
